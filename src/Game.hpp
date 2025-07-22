@@ -7,6 +7,7 @@
 #include "data_structs/BinaryTree.hpp"
 #include "data_structs/DoublyLinkedList.hpp"
 #include "data_structs/SinglyLinkedList.hpp"
+#include "data_structs/Stats.hpp"
 
 class Game
 {
@@ -29,6 +30,8 @@ private:
 
     void show_menu();
 
+    DoublyLinkedList StatsList;
+    BinaryTree jogo;
     int userOption;
     bool isRunning;
 };

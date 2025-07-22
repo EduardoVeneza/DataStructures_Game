@@ -78,7 +78,20 @@ bool Game::verifyUserInput(const int &option) const
 
 void Game::play() // Implementar
 {
+    std::string nome;
+    std::cout << "Digite o nome do(a) jogador(a): ";
+    std::cin >> nome;
+
+    std::cin.ignore(); // limpa buffer
+    system("clear");
     
+    std::cout << "A Jornada de " << nome << ", o Escolhido de Odin\n\n";
+    
+    std::string path = this->jogo.traverse(); // Passa pelo jogo
+    std::cout << path << std::endl;
+    Stats stats = {nome, 0, 0, 0};
+    this->StatsList.insert(stats);
+    pause();
 }
 
 void Game::showHistory()
@@ -96,7 +109,7 @@ void Game::showHistory()
 void Game::verifyScore()
 {
     system("clear");
-    std::cout << "Score Here...\n\n";
+    this->StatsList.printList();
     this->pause();
 }
 
