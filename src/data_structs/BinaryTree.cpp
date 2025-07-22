@@ -68,40 +68,62 @@ std::string BinaryTree::traverseRecursive(BNode* node) {
 }
 
 void BinaryTree::carregarHistoria() {
-    insertPath("", "Sua missão: recuperar Gungnir antes que ela caia nas mãos dos Jotuns. Digite 1 para começar!");
+    insertPath("", "Você está na vila de Midgard. Um corvo negro pousa à sua frente, deixando cair uma runa brilhante.\n1 - Seguir o corvo pela floresta sagrada\n2 - Ignora o presságio e vai para o mar");
+    insertPath("1", "Você segue o corvo pela floresta e encontra um elfo ferido com uma flecha envenenada.\n1 - Ajudar\n2 - Ignorar");
+    insertPath("2", "Você foi em direção ao mar, o céu escurece, forma-se uma tempestade...\n1 - Enfrenta o mar\n2 - Volta à vila");
 
-    insertPath("1", "Você está na vila de Midgard. Um corvo negro pousa à sua frente, deixando cair uma runa brilhante.\n1 - Seguir o corvo\n2 - Ir para o mar");
-    insertPath("11", "Você encontra um elfo ferido com uma flecha envenenada.\n1 - Ajudar\n2 - Ignorar");
-    insertPath("111", "O elfo te recompensa com uma runa sagrada. Você chega à Serpente de Niflheim.\n1 - Enfrentar\n2 - Desviar");
-    insertPath("1111", "Você vence a serpente, mas perde sua espada.\n1 - Entrar desarmado na caverna\n2 - Recusar e voltar");
-    insertPath("11111", "Você chegou à caverna da lança.\n1 - Usar a runa\n2 - Usar força bruta");
-    insertPath("111111", "Você ativou a passagem e encontrou Gungnir! Final verdadeiro!");
-    insertPath("111112", "Você acionou uma armadilha e morreu. Final ruim.");
-    insertPath("1112", "Você está no pântano amaldiçoado.\n1 - Atravessar\n2 - Esperar");
-    insertPath("11121", "Os espíritos oferecem ajuda.\n1 - Aceitar ajuda\n2 - Ignorar");
-    insertPath("111211", "Você alcança a lança, mas perde a voz. Final neutro.");
-    insertPath("111212", "Você fica preso em uma ilusão eterna. Final ruim.");
-    insertPath("11122", "Você enlouqueceu com os sussurros. Final ruim.");
+    // Elfo
+    insertPath("11","O elfo se vê agradecido ele revela que planejava lhe roubar, mas por sua bondade, acaba lhe poupando... De repente a serpente de nilfheim aparece!. \n1- Enfrenta a serpente\n2 - Corre");
+    insertPath("12","Você ignora o elfo, ele se revela um impostor que trabalhava para os trolls bandidos das montanhas! Você foi capturado(a)\n1 - Luta\n2 - Negocia");
+    insertPath("111","Você, ao enfrentar a serpente, mostra coragem a odin, que lhe concede força para derrota-la, porém, perde sua espada no processo. Você encontra uma caverna\n1 - Entra desarmado\n2 - Recua"); 
+    insertPath("112","Você corre loucamente da serpente gigante, e acaba chegando em um pântano suspeito... Lá, você ouve sussuros!\n1 - Segue\n2 - Aguarda"); 
+    
+    insertPath("121", "Você consegue lutar e fugir, mas sai gravemente ferido!\n1 - Continua\n2 - Volta");
+    insertPath("122", "[FINAL RUIM] Eles tomam a runa do corvo, você fica indefeso. E aos poucos morre de frio");
 
-    insertPath("112", "Você foi capturado por trolls.\n1 - Lutar\n2 - Negociar");
-    insertPath("1121", "Você venceu ferido.\n1 - Continuar\n2 - Voltar");
-    insertPath("11211", "Você caiu ferido e morreu no caminho. Final ruim.");
-    insertPath("11212", "Você desistiu. Final ruim.");
-    insertPath("1122", "Os trolls pedem a runa.\n1 - Entregar\n2 - Tentar enganar");
-    insertPath("11221", "Você vive escondido, mas sem glória. Final neutro.");
-    insertPath("11222", "Você foi descoberto e devorado. Final ruim.");
+    insertPath("1211","[FINAL RUIM] Prossegue em estado crítico, você encontra uma caverna e assim, vive escondido sem glória");
+    insertPath("1212","[FINAL RUIM] Sem esperança, você volta triste e derrotado para a vila!");
 
-    insertPath("12", "Você foi para o mar direto. (Inexistente na história?)"); // talvez inútil
+    insertPath("1121", "Os sussuros eram espíritos do bem! Eles te oferecem ajuda\n1 - Aceita ajuda dos espíritos\n2 - Ignora os espíritos");
+    insertPath("1122", "[FINAL RUIM] Você enlouquece com os sussuros e vive agora vagando sozinho no pântano.");
 
-    insertPath("21", "Você naufragou. As valquírias aparecem.\n1 - Aceitar ajuda\n2 - Fugir");
-    insertPath("211", "Odin propõe um enigma.\n1 - Falar a verdade\n2 - Mentir");
-    insertPath("2111", "Odin o abençoa. Você encontra Gungnir. Final verdadeiro!");
-    insertPath("2112", "Odin o amaldiçoa. Final ruim.");
-    insertPath("212", "Você caiu de um penhasco e morreu. Final ruim.");
+    insertPath("11211", "[FINAL RUIM] Chega à caverna da lança, mas os espíritos levaram sua voz como cobrança, e agora, você não consegue responder os enigmas de odin");
+    insertPath("11212", "[FINAL RUIM] Fica preso em ilusão eterna");
 
-    insertPath("22", "Odin te amaldiçoa.\n1 - Ir ao templo\n2 - Ignorar");
-    insertPath("221", "O portal rúnico se abre.\n1 - Entrar\n2 - Hesitar");
-    insertPath("2211", "Você chegou à lança e completou a missão. Final verdadeiro!");
-    insertPath("2212", "Você se perdeu na floresta. Final ruim.");
-    insertPath("222", "Uma doença mágica te consome. Final ruim.");
+    insertPath("1111","Você por sorte, entrou na lendária caverna da lança, lá dentro observa um encaixe perfeito para a runa que o corvo deixou cair...\n1 - Usa a runa\n2 - Usa a força bruta");
+    insertPath("1112", "[FINAL RUIM] Você se vê desarmado e sem esperanças, decide então voltar para casa e vendar a runa.");
+    
+    insertPath("11111", "[FINAL BOM] Você segura a lança e sente um poder imensurável! Você agora é o novo guardião de asgard!");
+    insertPath("11112", "[FINAL RUIM] Você ativa as armadilhas, e morre no local, agora você será história para o próximo escolhido.");
+
+    // Mar
+    insertPath("21","Seu barco não aguentou as ondas, e naufraga! Mas você escuta um sussuro suspeito no fundo do oceâno...\n1 - Seguir sussuro\n2 - Lutar contra as ondas");
+    insertPath("22","Era um teste... Odin lhe julga covarde e você é amaldiçoado! Mas... você vê algo brilhante no horizonte\n1 - Seguir Luz\n2 - Voltar para a vila em busca da cura");
+
+    insertPath("221", "Odin envia um portal rúnico para asgard, e lá ele te propôe um enigma!\n1 - Aceita\n2 - Recusa");
+    insertPath("222", "[FINAL RUIM] Você é consumido pela doença e morre.");
+
+    insertPath("2211", "Você então segue para a última prova, o enigma é o seguinte: \nEnigma: Faço parte de tudo e estou no final do espaço e do tempo. Quem sou eu?\n1 - Você: A letra O.\n2 - Você: O senhor Odin! Todo poderoso!");
+    insertPath("2212", "[FINAL RUIM] Odin lhe julga estupido, e decide lhe banir para o reino dos mortos!");
+
+    insertPath("22111", "[FINAL BOM] Odin: HaHaHa, você está certo, lhe concedo, o titulo de novo guardião de Asgard!");
+    insertPath("22112", "[FINAL RUIM] Odin: Você é apenas um bajulador barato! Volte a midgard e nunca mais volte aqui!");
+
+    insertPath("211","Você é resgatado pelas valquírias! Elas estão te levando para um lugar esquisito...\n1 - Aceita ajuda\n2 - Foge");
+    insertPath("212","[FINAL RUIM] -> Você morreu afogado nos mares de midgard..."); // Final Ruim
+
+    insertPath("2111", "Você é levado aos salões de Asgard. Odin propõe um enigma! \n1 - Aceita\n2 - Recusa");
+    insertPath("2112", "Cai em um penhasco e acorda em Helheim Lá você encontra Hela! Ela te propõe um pacto! \n1 - Sacrifica memória\n2 - Recusa");
+
+    insertPath("21121", "[FINAL RUIM] Escapa, mas nunca mais lembra quem é");
+    insertPath("21122", "[FINAL RUIM] Você fica preso em Helheim eternamente");
+
+    insertPath("21121", "");
+    insertPath("21122", "");
+
+    insertPath("21111", "Você então segue para a última prova, o enigma é o seguinte: \nEnigma: Faço parte de tudo e estou no final do espaço e do tempo. Quem sou eu?\n1 - Você: A letra O.\n2 - Você: O senhor Odin! Todo poderoso!");
+    insertPath("21112", "[FINAL RUIM] Odin lhe julga estupido, e decide lhe banir para o reino dos mortos!");
+
+    insertPath("211111", "[FINAL BOM] Odin: HaHaHa, você está certo, lhe concedo, o titulo de novo guardião de Asgard!");
+    insertPath("211112", "[FINAL RUIM] Odin: Você é apenas um bajulador barato! Volte a midgard e nunca mais volte aqui!");
 }

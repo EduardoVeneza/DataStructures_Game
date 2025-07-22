@@ -87,9 +87,11 @@ void Game::play() // Implementar
     
     std::cout << "A Jornada de " << nome << ", o Escolhido de Odin\n\n";
     
+
+    // {nome, 0, 0, 0}
     std::string path = this->jogo.traverse(); // Passa pelo jogo
-    std::cout << path << std::endl;
-    Stats stats = {nome, 0, 0, 0};
+    
+    Stats stats;
     this->StatsList.insert(stats);
     pause();
 }
