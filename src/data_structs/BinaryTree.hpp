@@ -1,46 +1,32 @@
-#ifndef BINARYTREE_HPP
-#define BINARYTREE_HPP
-#include <iostream>
+#ifndef BINARY_TREE_HPP
+#define BINARY_TREE_HPP
 
-struct Node
-{
-    int data;
-    Node * esq, * dir;
+#include <string>
+
+struct BNode {
+    std::string data;
+    BNode* esq;
+    BNode* dir;
+
+    BNode(const std::string& text) : data(text), esq(nullptr), dir(nullptr) {}
 };
 
-class BinaryTree
-{
-    public:
-        Node * raiz;
-        // Função que insere em uma árvore (Recursiva):
-        Node * insert(Node * raiz, int data);
+class BinaryTree {
+private:
+    BNode* root;
 
-        // Função de busca em uma árvore (Recursiva):
-        Node * search(Node * raiz, int data);
+    void destroy(BNode* node);
+    void insertPathRecursive(BNode*& node, const std::string& path, size_t index, const std::string& text);
+    std::string traverseRecursive(BNode* node);
+    std::string pathAtual;
+    void carregarHistoria(); // <- método que carrega os insertPath
 
-        // Função para remover
-        Node * remover(Node * raiz, int value);
+public:
+    BinaryTree();
+    ~BinaryTree();
 
-        Node * remover_folha(Node * raiz);
-
-        Node * iguala_folhas(Node * raiz);
-
-        // Função que calcula e retorna a altura de uma árvore (Recursiva):
-        int getAltura(Node * raiz);
-
-        // Funções que imprimem a árvore (Recursivas):
-        void print_preOrdem(Node * raiz);
-        void print_emOrdem(Node * raiz);
-        void print_posOrdem(Node * raiz);
-
-        // Incrementa em count a quantidade de nós
-        void getQTD(Node * raiz, int * count);
-
-        // Retorna a quantidade de nós
-        int quantidade_nos(Node * raiz);
-
-        // Retorna a quantidade de folhas
-        int quantidade_folhas(Node * raiz);
+    void insertPath(const std::string& path, const std::string& text);
+    std::string traverse();
 };
 
-#endif
+#endif // BINARY_TREE_HPP
