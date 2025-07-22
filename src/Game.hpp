@@ -28,6 +28,8 @@ private:
 
     void pause();
 
+    void updateStats(const int &path, const std::string &nome);
+
     void show_menu();
 
     DoublyLinkedList StatsList;

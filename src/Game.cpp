@@ -86,13 +86,10 @@ void Game::play() // Implementar
     system("clear");
     
     std::cout << "A Jornada de " << nome << ", o Escolhido de Odin\n\n";
-    
 
-    // {nome, 0, 0, 0}
     std::string path = this->jogo.traverse(); // Passa pelo jogo
-    
-    Stats stats;
-    this->StatsList.insert(stats);
+    int intPath = std::stoi(path);
+    this->updateStats(intPath, nome);
     pause();
 }
 
@@ -133,6 +130,151 @@ void Game::pause()
     std::cout << "Pressione Enter para continuar...";
     std::cin.ignore();
     std::cin.get();
+}
+
+void Game::updateStats(const int &path, const std::string &nome)
+{
+    auto *searchPointer = this->StatsList.searchByName(nome);
+    if (searchPointer != nullptr) // Já existe aquele nome dentro da lista de estatisticas
+    {
+        switch (path)
+        {
+        case 122: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1211: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1122: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 11211: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 11212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 11111: // BOM
+            searchPointer->data.jogosGanhos = searchPointer->data.jogosGanhos + 1;
+            break;
+        case 11112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 222: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 2212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 22111: // BOM
+            searchPointer->data.jogosGanhos = searchPointer->data.jogosGanhos + 1;
+            break;
+        case 22112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 21121: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 21122: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 21112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 211111: // BOM
+            searchPointer->data.jogosGanhos = searchPointer->data.jogosGanhos + 1;
+            break;
+        case 211112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        
+        default:
+            std::cout << "Final Não encontrado! Ou Inválido\n";
+            break;
+        }
+        searchPointer->data.jogosTotais = searchPointer->data.jogosPerdidos + searchPointer->data.jogosGanhos;
+    }
+    else 
+    {
+        Stats stats = {nome, 0, 0, 0};
+        this->StatsList.insert(stats);
+        searchPointer = StatsList.searchByName(nome);
+        
+        switch (path)
+        {
+        case 122: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1211: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1122: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 11211: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 11212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 1112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 11111: // BOM
+            searchPointer->data.jogosGanhos = searchPointer->data.jogosGanhos + 1;
+            break;
+        case 11112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 222: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 2212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 22111: // BOM
+            searchPointer->data.jogosGanhos = searchPointer->data.jogosGanhos + 1;
+            break;
+        case 22112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 212: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 21121: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 21122: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 21112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        case 211111: // BOM
+            searchPointer->data.jogosGanhos = searchPointer->data.jogosGanhos + 1;
+            break;
+        case 211112: // RUIM
+            searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
+            break;
+        
+        default:
+            std::cout << "Final Não encontrado! Ou Inválido\n";
+            break;
+        }
+        searchPointer->data.jogosTotais = searchPointer->data.jogosPerdidos + searchPointer->data.jogosGanhos;
+    }
 }
 
 void Game::show_menu()

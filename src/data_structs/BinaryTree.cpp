@@ -118,9 +118,6 @@ void BinaryTree::carregarHistoria() {
     insertPath("21121", "[FINAL RUIM] Escapa, mas nunca mais lembra quem é");
     insertPath("21122", "[FINAL RUIM] Você fica preso em Helheim eternamente");
 
-    insertPath("21121", "");
-    insertPath("21122", "");
-
     insertPath("21111", "Você então segue para a última prova, o enigma é o seguinte: \nEnigma: Faço parte de tudo e estou no final do espaço e do tempo. Quem sou eu?\n1 - Você: A letra O.\n2 - Você: O senhor Odin! Todo poderoso!");
     insertPath("21112", "[FINAL RUIM] Odin lhe julga estupido, e decide lhe banir para o reino dos mortos!");
 
