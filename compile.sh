@@ -1,1 +1,1 @@
-g++ src/data_structs/BinaryTree.cpp src/data_structs/SinglyLinkedList.cpp src/Game.cpp src/main.cpp -o game
+g++ src/data_structs/BinaryTree.cpp src/data_structs/DoublyLinkedList.cpp src/data_structs/SinglyLinkedList.cpp src/Game.cpp src/main.cpp -o game

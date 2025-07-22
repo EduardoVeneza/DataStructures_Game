@@ -4,6 +4,9 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstdlib>
+#include "data_structs/BinaryTree.hpp"
+#include "data_structs/DoublyLinkedList.hpp"
+#include "data_structs/SinglyLinkedList.hpp"
 
 class Game
 {
