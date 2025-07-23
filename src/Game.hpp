@@ -24,6 +24,8 @@ private:
 
     void verifyScore();
 
+    void menuTecnico();
+
     void rules();
 
     void pause();
@@ -34,6 +36,7 @@ private:
 
     DoublyLinkedList StatsList;
     BinaryTree jogo;
+    SinglyLinkedList jogo_em_lista;
     int userOption;
     bool isRunning;
 };
