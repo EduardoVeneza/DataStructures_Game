@@ -3,6 +3,7 @@
 Game::Game()
 {
     this->isRunning = true;
+    jogo_em_lista.fillFromTree(jogo.getRoot());
 }
 
 void Game::run()
@@ -84,13 +85,12 @@ void Game::play() // Implementar
 
     std::cin.ignore(); // limpa buffer
     system("clear");
-    
     std::cout << "A Jornada de " << nome << ", o Escolhido de Odin\n\n";
 
     std::string path = this->jogo.traverse(); // Passa pelo jogo
     int intPath = std::stoi(path);
     this->updateStats(intPath, nome);
-    pause();
+    this->menuTecnico();
 }
 
 void Game::showHistory()
@@ -110,6 +110,80 @@ void Game::verifyScore()
     system("clear");
     this->StatsList.printList();
     this->pause();
+}
+
+void Game::menuTecnico()
+{
+    int opcao;
+    do
+    {
+        std::cout << "\n=== Menu de Estatísticas do Jogo ===\n";
+        std::cout << "1. Mostrar lista simplesmente encadeada (com os nós da árvore)\n";
+        std::cout << "2. Listar a árvore em ordem\n";
+        std::cout << "3. Buscar estatísticas\n";
+        std::cout << "4. Voltar ao menu anterior\n";
+        std::cout << "Escolha uma opção: ";
+        std::cin >> opcao;
+        std::cin.ignore(); // Limpa o buffer do teclado
+
+        switch (opcao)
+        {
+        case 1:
+            std::cout << "\n--- Lista Original ---\n";
+            jogo_em_lista.printList();
+            break;
+
+        case 2:
+            std::cout << "\n--- Árvore em Ordem ---\n";
+            jogo.listarEmOrdem();
+            break;
+
+        case 3:
+        {
+            int subopcao;
+            std::cout << "\nBuscar por:\n";
+            std::cout << "1. Nome do jogador\n";
+            std::cout << "2. Número de jogos\n";
+            std::cout << "Escolha uma opção: ";
+            std::cin >> subopcao;
+            std::cin.ignore();
+
+            if (subopcao == 1)
+            {
+                std::string nome;
+                std::cout << "Digite o nome: ";
+                std::getline(std::cin, nome);
+                auto *s = StatsList.searchByName(nome);
+                if (s != nullptr)
+                {
+                    std::cout << "Nome: " << s->data.name
+                              << ", Jogos: " << s->data.jogosTotais
+                              << ", Vitórias: " << s->data.jogosGanhos
+                              << ", Derrotas: " << s->data.jogosPerdidos << std::endl;
+                }
+            }
+            else if (subopcao == 2)
+            {
+                int jogos;
+                std::cout << "Digite o número de jogos: ";
+                std::cin >> jogos;
+                StatsList.searchByTotalGames(jogos);
+            }
+            else
+            {
+                std::cout << "Opção inválida.\n";
+            }
+            break;
+        }
+
+        case 4:
+            std::cout << "Voltando ao menu anterior...\n";
+            break;
+
+        default:
+            std::cout << "Opção inválida! Tente novamente.\n";
+        }
+    } while (opcao != 4);
 }
 
 void Game::rules()
@@ -196,19 +270,19 @@ void Game::updateStats(const int &path, const std::string &nome)
         case 211112: // RUIM
             searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
             break;
-        
+
         default:
             std::cout << "Final Não encontrado! Ou Inválido\n";
             break;
         }
         searchPointer->data.jogosTotais = searchPointer->data.jogosPerdidos + searchPointer->data.jogosGanhos;
     }
-    else 
+    else
     {
         Stats stats = {nome, 0, 0, 0};
         this->StatsList.insert(stats);
         searchPointer = StatsList.searchByName(nome);
-        
+
         switch (path)
         {
         case 122: // RUIM
@@ -268,7 +342,7 @@ void Game::updateStats(const int &path, const std::string &nome)
         case 211112: // RUIM
             searchPointer->data.jogosPerdidos = searchPointer->data.jogosPerdidos + 1;
             break;
-        
+
         default:
             std::cout << "Final Não encontrado! Ou Inválido\n";
             break;

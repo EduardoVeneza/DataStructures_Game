@@ -23,6 +23,8 @@ public:
     void insert(const Stats& value);
     void printList() const;
     void clear();
+    void searchByTotalGames(int jogosTotais) const;
+
 
     DNode* searchByName(const std::string& name) const;
     bool removeByName(const std::string& name);

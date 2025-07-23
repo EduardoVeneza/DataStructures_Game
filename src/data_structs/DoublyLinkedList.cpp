@@ -76,3 +76,23 @@ bool DoublyLinkedList::removeByName(const std::string& name) {
     size--;
     return true;
 }
+
+void DoublyLinkedList::searchByTotalGames(int jogosTotais) const {
+    DNode* current = head;
+    bool found = false;
+
+    while (current) {
+        if (current->data.jogosTotais == jogosTotais) {
+            const Stats& s = current->data;
+            std::cout << "Nome: " << s.name
+                      << ", Jogos: " << s.jogosTotais
+                      << ", Vitórias: " << s.jogosGanhos
+                      << ", Derrotas: " << s.jogosPerdidos << std::endl;
+            found = true;
+        }
+        current = current->next;
+    }
+
+    if (!found)
+        std::cout << "Nenhum jogador encontrado com " << jogosTotais << " jogos.\n";
+}
