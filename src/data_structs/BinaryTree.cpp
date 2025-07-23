@@ -69,8 +69,25 @@ std::string BinaryTree::traverseRecursive(BNode *node)
     if (node->esq || node->dir)
     {
         int escolha;
-        std::cout << "\nEscolha (1 ou 2): ";
-        std::cin >> escolha;
+        std::string entrada;
+        bool valido = false;
+        do
+        {
+            std::cout << "\nEscolha (1 ou 2): ";
+            std::cin >> entrada;
+            try
+            {
+                escolha = std::stoi(entrada);
+                if (escolha == 1 || escolha == 2)
+                    valido = true;
+                else
+                    std::cout << "Escolha inválida!\n";
+            }
+            catch (...)
+            {
+                std::cout << "Entrada inválida! Digite 1 ou 2.\n";
+            }
+        } while (!valido);
 
         if (escolha == 1)
         {
@@ -81,11 +98,6 @@ std::string BinaryTree::traverseRecursive(BNode *node)
         {
             pathAtual += '2';
             return "2" + traverseRecursive(node->dir);
-        }
-        else
-        {
-            std::cout << "Escolha inválida!\n";
-            return traverseRecursive(node); // repete a pergunta
         }
     }
     else
